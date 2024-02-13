@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Financial Calculator</title>
+</head>
+<body>
+    <header>
+        <h1>FIRE Calculator</h1>
+        <p>Plan your financial independence and early retirement with our simple calculator.</p>
+    </header>
+
+    <div class="retirement-age-container">
+        <div>
+            <label for="currentAge">Current Age:</label>
+            <input type="number" id="currentAge" required>
+        </div>
+
+        <div>
+            <label for="retirementAge">Desired Retirement Age:</label>
+            <input type="number" id="retirementAge" required onblur="calculateTimeToRetire()">
+        </div>
+
+	<div>
+            <label for="TaxBracket">TaxBracket(%):</label>
+            <input type="number" id="TaxBracket" required>
+        </div>
+
+        <div id="result"></div>
+
+        
+    </div>
+
+    <div class="loan-container">
+        <h2>Debt</h2>
+        <table id="loanTable">
+            <tr>
+                <th>Loan Type</th>
+                <th>Monthly EMI</th>
+                <th>Loan Length (in years)</th>
+		<th>Pendig Loan Amount </th>
+            </tr>
+            <tr class="loan-row">
+                <td><input type="text" class="loanType" required></td>
+                <td><input type="number" class="loanEMI" required></td>
+                <td><input type="number" class="loanLength" required></td>
+		<td><input type="number" class="loanEMI" required></td>
+            </tr>
+        </table>
+<button type="button" onclick="addLoanRow()">+</button>
+	<h2>Investment</h2>
+        <table id="InvestmentTable">
+            <tr>
+                <th>Investment Type</th>
+                <th>Monthly EMI</th>
+                <th>Period (in years)</th>
+		<th>Initial Amount </th>
+            </tr>
+            <tr class="loan-row">
+                <td><input type="text" class="loanType" required></td>
+                <td><input type="number" class="loanEMI" required></td>
+                <td><input type="number" class="loanLength" required></td>
+		<td><input type="number" class="loanEMI" required></td>
+            </tr>
+        </table>
+        <button type="button" onclick="addInvestmentRow()">+</button>
+
+        <h2>FuturePlans</h2>
+        <table id="FuturePlans">
+            <tr>
+                <th>Plan Name</th>
+                <th>Required Amount</th>
+                <th>By Year</th>
+		
+            </tr>
+            <tr class="loan-row">
+                <td><input type="text" class="loanType" required></td>
+                <td><input type="number" class="loanEMI" required></td>
+                <td><input type="number" class="loanLength" required></td>
+		
+            </tr>
+        </table>
+<button type="button" onclick="addFuturePlanRow()">+</button>
+
+<h2>Personal Insurance</h2>
+        <table id="Insurance">
+            <tr>
+                <th>Insurance Name</th>
+		<th>Monthly EMI</th>
+                <th>Benifiary Amount</th>
+                <th>Till Year</th>
+		
+            </tr>
+            <tr class="loan-row">
+                <td><input type="text" class="loanType" required></td>
+                <td><input type="number" class="loanEMI" required></td>
+		<td><input type="number" class="loanEMI" required></td>
+                <td><input type="number" class="loanLength" required></td>
+		
+            </tr>
+        </table>
+<button type="button" onclick="addFuturePlanRow()">+</button>
+
+        <div id="loanDetailsResult"></div>
+
+	<h2>Calculation</h2>
+<button type="button" onclick="calculateLoanDetails()">Calculate</button>
+<input type="text" id="myTextbox">
+
+    </div>
+<body>
+
+    <h2>Loan Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4">Loan 1</th>
+                <th colspan="4">Loan 2</th>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <th>Loan Amount</th>
+                <th>Monthly EMI</th>
+                <th>Pending Loan</th>
+                <th>Year</th>
+                <th>Loan Amount</th>
+                <th>Monthly EMI</th>
+                <th>Pending Loan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2023</td>
+                <td>$100,000</td>
+                <td>$1,000</td>
+                <td>$96,000</td>
+                <td>2023</td>
+                <td>$200,000</td>
+                <td>$2,000</td>
+                <td>$196,000</td>
+            </tr>
+            <tr>
+                <td>2024</td>
+                <td>$96,000</td>
+                <td>$1,000</td>
+                <td>$92,000</td>
+                <td>2024</td>
+                <td>$196,000</td>
+                <td>$2,000</td>
+                <td>$192,000</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>   
+
+</html>
