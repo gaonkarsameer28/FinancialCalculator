@@ -21,7 +21,8 @@
         newRow.innerHTML = `
             <td><input type="text" class="loanType" required></td>
             <td><input type="number" class="loanEMI" required></td>
-            <td><input type="number" class="loanLength" required></td>`;
+            <td><input type="number" class="loanLength" required></td>
+            <td><input type="number" class="loanEMI" required></td>`;
     }
 
     function calculateLoanDetails() {
