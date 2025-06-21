@@ -49,7 +49,7 @@
 		        <td><input type="number" class="loanEMI" required></td>
             </tr>
         </table>
-<button type="button" onclick="addLoanRow()">+</button>
+<button type="button" id="btnaddloan" onclick="addLoanRow()">+</button>
 	<h2>Investment</h2>
         <table id="InvestmentTable">
             <tr>
@@ -65,7 +65,7 @@
 		<td><input type="number" class="loanEMI" required></td>
             </tr>
         </table>
-        <button type="button" onclick="addInvestmentRow()">+</button>
+        <button type="button" id="btnaddinvestment" onclick="addInvestmentRow()">+</button>
 
         <h2>FuturePlans</h2>
         <table id="FuturePlans">
@@ -82,13 +82,13 @@
 		
             </tr>
         </table>
-<button type="button" onclick="addFuturePlanRow()">+</button>
+<button type="button" id="btnaddfutureplan" onclick="addFuturePlanRow()">+</button>
 
 <h2>Personal Insurance</h2>
-        <table id="Insurance">
+        <table id="tblInsurance">
             <tr>
                 <th>Insurance Name</th>
-		<th>Monthly EMI</th>
+		        <th>Monthly EMI</th>
                 <th>Benifiary Amount</th>
                 <th>Till Year</th>
 		
@@ -101,7 +101,7 @@
 		
             </tr>
         </table>
-<button type="button" onclick="addFuturePlanRow()">+</button>
+<button type="button" onclick="addInsuranceRow()">+</button>
 
         <div id="loanDetailsResult"></div>
 

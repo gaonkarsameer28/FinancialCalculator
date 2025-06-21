@@ -25,6 +25,38 @@
             <td><input type="number" class="loanEMI" required></td>`;
     }
 
+    function addInvestmentRow() {
+        const loanTable = document.getElementById('InvestmentTable');
+        const newRow = loanTable.insertRow(-1);
+        newRow.classList.add('loan-row');
+        newRow.innerHTML = `
+            <td><input type="text" class="loanType" required></td>
+            <td><input type="number" class="loanEMI" required></td>
+            <td><input type="number" class="loanLength" required></td>
+            <td><input type="number" class="loanEMI" required></td>`;
+    }
+
+    function addFuturePlanRow() {
+        const loanTable = document.getElementById('FuturePlans');
+        const newRow = loanTable.insertRow(-1);
+        newRow.classList.add('loan-row');
+        newRow.innerHTML = `
+            <td><input type="text" class="loanType" required></td>
+            <td><input type="number" class="loanEMI" required></td>
+            <td><input type="number" class="loanLength" required></td>`;
+    }
+
+    function addInsuranceRow() {
+        const loanTable = document.getElementById('tblInsurance');
+        const newRow = loanTable.insertRow(-1);
+        newRow.classList.add('loan-row');
+        newRow.innerHTML = `
+            <td><input type="text" class="loanType" required></td>
+            <td><input type="number" class="loanEMI" required></td>
+            <td><input type="number" class="loanLength" required></td>
+            <td><input type="number" class="loanEMI" required></td>`;
+    }
+
     function calculateLoanDetails() {
         const loanDetailsResultContainer = document.getElementById('loanDetailsResult');
         loanDetailsResultContainer.innerHTML = ''; // Clear previous results
