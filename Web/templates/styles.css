@@ -72,6 +72,34 @@
         background-color: #4CAF50;
         color: white;
     }
+    #pdfcontent table {
+  width: 100%;
+  border-collapse: collapse;
+  page-break-inside: auto;
+}
+
+#pdfcontent tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+#pdfcontent th, #pdfcontent td {
+  border: 1px solid #000;
+  padding: 8px;
+  text-align: center;
+}
+
+
+  #pdfcontent {
+    margin: 0;
+    padding: 20px;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    page-break-inside: avoid;
+  }
+
 
     .debt-positive-age {
         margin-top: 20px;

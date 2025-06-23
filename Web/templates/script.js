@@ -89,3 +89,21 @@ var myTextbox = document.getElementById('myTextbox');
         });
     }
 
+document.getElementById('exportBtn').addEventListener('click', function () {
+    const element = document.getElementById('pdfcontent');
+
+    html2pdf()
+      .set({
+        margin:       [10, 10],
+        filename:     'report.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  {
+          scale: 2,    // High DPI for quality
+          scrollY: 0,  // Prevents vertical offset
+          useCORS: true
+        },
+        jsPDF:        { unit: 'pt', format: 'a4', orientation: 'portrait' }
+      })
+      .from(element)
+      .save();
+  });

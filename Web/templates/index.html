@@ -1,118 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+ <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Financial Calculator</title>
+    <title>Financial Calculator</title>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
+  <header>
         <h1>FIRE Calculator</h1>
         <p>Plan your financial independence and early retirement with our simple calculator.</p>
     </header>
-
-    <div class="retirement-age-container">
-        <div>
-            <label for="currentAge">Current Age:</label>
-            <input type="number" id="currentAge" required>
-        </div>
-
-        <div>
-            <label for="retirementAge">Desired Retirement Age:</label>
-            <input type="number" id="retirementAge" required onblur="calculateTimeToRetire()">
-        </div>
-
-	<div>
-            <label for="TaxBracket">TaxBracket(%):</label>
-            <input type="number" id="TaxBracket" required>
-        </div>
-
-        <div id="result"></div>
-
-        
+<div class="retirement-age-container">
+    <div>
+        <label for="currentAge">Current Age:</label>
+        <input type="number" id="currentAge" required>
     </div>
 
-    <div class="loan-container">
-        <h2>Debt</h2>
-        <table id="loanTable">
+    <div>
+        <label for="retirementAge">Desired Retirement Age:</label>
+        <input type="number" id="retirementAge" required onblur="calculateTimeToRetire()">
+    </div>
+
+    <div>
+        <label for="TaxBracket">Tax Bracket (%):</label>
+        <input type="number" id="TaxBracket" required>
+    </div>
+
+    <div id="result"></div>
+</div>
+
+<div class="loan-container" id="sectionDebt">
+    <h2>Debt</h2>
+    <table id="loanTable">
+        <thead>
             <tr>
                 <th>Loan Type</th>
                 <th>Monthly EMI</th>
                 <th>Loan Length (in years)</th>
-		        <th>Pendig Loan Amount </th>
+                <th>Pending Loan Amount</th>
             </tr>
+        </thead>
+        <tbody>
             <tr class="loan-row">
                 <td><input type="text" class="loanType" required></td>
                 <td><input type="number" class="loanEMI" required></td>
                 <td><input type="number" class="loanLength" required></td>
-		        <td><input type="number" class="loanEMI" required></td>
+                <td><input type="number" class="pendingLoan" required></td>
             </tr>
-        </table>
-<button type="button" id="btnaddloan" onclick="addLoanRow()">+</button>
-	<h2>Investment</h2>
-        <table id="InvestmentTable">
+        </tbody>
+    </table>
+    <button type="button" id="btnaddloan" onclick="addLoanRow()">+</button>
+</div>
+
+<div id="sectionInvestment">
+    <h2>Investment</h2>
+    <table id="InvestmentTable">
+        <thead>
             <tr>
                 <th>Investment Type</th>
                 <th>Monthly EMI</th>
                 <th>Period (in years)</th>
-		<th>Initial Amount </th>
+                <th>Initial Amount</th>
             </tr>
-            <tr class="loan-row">
-                <td><input type="text" class="loanType" required></td>
-                <td><input type="number" class="loanEMI" required></td>
-                <td><input type="number" class="loanLength" required></td>
-		<td><input type="number" class="loanEMI" required></td>
+        </thead>
+        <tbody>
+            <tr class="investment-row">
+                <td><input type="text" class="investmentType" required></td>
+                <td><input type="number" class="investmentEMI" required></td>
+                <td><input type="number" class="investmentPeriod" required></td>
+                <td><input type="number" class="initialAmount" required></td>
             </tr>
-        </table>
-        <button type="button" id="btnaddinvestment" onclick="addInvestmentRow()">+</button>
+        </tbody>
+    </table>
+    <button type="button" id="btnaddinvestment" onclick="addInvestmentRow()">+</button>
+</div>
 
-        <h2>FuturePlans</h2>
-        <table id="FuturePlans">
+<div id="sectionFuturePlans">
+    <h2>Future Plans</h2>
+    <table id="FuturePlans">
+        <thead>
             <tr>
                 <th>Plan Name</th>
                 <th>Required Amount</th>
                 <th>By Year</th>
-		
             </tr>
-            <tr class="loan-row">
-                <td><input type="text" class="loanType" required></td>
-                <td><input type="number" class="loanEMI" required></td>
-                <td><input type="number" class="loanLength" required></td>
-		
+        </thead>
+        <tbody>
+            <tr class="plan-row">
+                <td><input type="text" class="planName" required></td>
+                <td><input type="number" class="requiredAmount" required></td>
+                <td><input type="number" class="targetYear" required></td>
             </tr>
-        </table>
-<button type="button" id="btnaddfutureplan" onclick="addFuturePlanRow()">+</button>
+        </tbody>
+    </table>
+    <button type="button" id="btnaddfutureplan" onclick="addFuturePlanRow()">+</button>
+</div>
 
-<h2>Personal Insurance</h2>
-        <table id="tblInsurance">
+<div id="sectionInsurance">
+    <h2>Personal Insurance</h2>
+    <table id="tblInsurance">
+        <thead>
             <tr>
                 <th>Insurance Name</th>
-		        <th>Monthly EMI</th>
-                <th>Benifiary Amount</th>
+                <th>Monthly EMI</th>
+                <th>Beneficiary Amount</th>
                 <th>Till Year</th>
-		
             </tr>
-            <tr class="loan-row">
-                <td><input type="text" class="loanType" required></td>
-                <td><input type="number" class="loanEMI" required></td>
-		<td><input type="number" class="loanEMI" required></td>
-                <td><input type="number" class="loanLength" required></td>
-		
+        </thead>
+        <tbody>
+            <tr class="insurance-row">
+                <td><input type="text" class="insuranceName" required></td>
+                <td><input type="number" class="insuranceEMI" required></td>
+                <td><input type="number" class="beneficiaryAmount" required></td>
+                <td><input type="number" class="tillYear" required></td>
             </tr>
-        </table>
-<button type="button" onclick="addInsuranceRow()">+</button>
-
-        <div id="loanDetailsResult"></div>
-
+        </tbody>
+    </table>
+    <button type="button" onclick="addInsuranceRow()">+</button>
+</div>
+ <div id="loanDetailsResult"></div>
+<div>
 	<h2>Calculation</h2>
 <button type="button" onclick="calculateLoanDetails()">Calculate</button>
 <input type="text" id="myTextbox">
 
     </div>
-<body>
-
-    <h2>Loan Table</h2>
+<div id="pdfcontent" style="padding: 20px; page-break-after: always;">
     <table>
         <thead>
             <tr>
@@ -151,10 +167,13 @@
                 <td>$2,000</td>
                 <td>$192,000</td>
             </tr>
-            <!-- Add more rows as needed -->
         </tbody>
     </table>
-    <script src="script.js"></script>
-</body>   
+</div>
 
+
+  <button id="exportBtn">Download PDF</button>
+
+
+</body>
 </html>
