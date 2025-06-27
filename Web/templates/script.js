@@ -14,16 +14,18 @@
         resultContainer.innerHTML += `<p>You have ${remainingYears} years remaining until your desired retirement age.</p>`;
     }
 
-    function addLoanRow() {
-        const loanTable = document.getElementById('loanTable');
-        const newRow = loanTable.insertRow(-1);
-        newRow.classList.add('loan-row');
-        newRow.innerHTML = `
-            <td><input type="text" class="loanType" required></td>
-            <td><input type="number" class="loanEMI" required></td>
-            <td><input type="number" class="loanLength" required></td>
-            <td><input type="number" class="loanEMI" required></td>`;
-    }
+   function addLoanRow() {
+    const loanTable = document.getElementById('loanTable').getElementsByTagName('tbody')[0];
+    const newRow = loanTable.insertRow(-1);
+    newRow.classList.add('loan-row');
+
+    newRow.innerHTML = `
+        <td><input type="text" class="loanType" required></td>
+        <td><input type="number" class="loanEMI" required></td>
+        <td><input type="number" class="loanLength" required></td>
+        <td><input type="number" class="loanEMI" required></td>
+        <td><span class="delete-btn" onclick="deleteRow(this)">&#10006;</span></td>`;
+}
 
     function addInvestmentRow() {
         const loanTable = document.getElementById('InvestmentTable');
@@ -33,7 +35,8 @@
             <td><input type="text" class="loanType" required></td>
             <td><input type="number" class="loanEMI" required></td>
             <td><input type="number" class="loanLength" required></td>
-            <td><input type="number" class="loanEMI" required></td>`;
+            <td><input type="number" class="loanEMI" required></td>
+            <td><span class="delete-btn" onclick="deleteRow(this)">&#10006;</span></td>`;
     }
 
     function addFuturePlanRow() {
@@ -43,7 +46,8 @@
         newRow.innerHTML = `
             <td><input type="text" class="loanType" required></td>
             <td><input type="number" class="loanEMI" required></td>
-            <td><input type="number" class="loanLength" required></td>`;
+            <td><input type="number" class="loanLength" required></td>
+            <td><span class="delete-btn" onclick="deleteRow(this)">&#10006;</span></td>`;
     }
 
     function addInsuranceRow() {
@@ -54,8 +58,15 @@
             <td><input type="text" class="loanType" required></td>
             <td><input type="number" class="loanEMI" required></td>
             <td><input type="number" class="loanLength" required></td>
-            <td><input type="number" class="loanEMI" required></td>`;
+            <td><input type="number" class="loanEMI" required></td>
+            <td><span class="delete-btn" onclick="deleteRow(this)">&#10006;</span></td>`;
     }
+
+    function deleteRow(btn) {
+    const row = btn.closest('tr');
+    row.remove();
+}
+
 
     function calculateLoanDetails() {
         const loanDetailsResultContainer = document.getElementById('loanDetailsResult');
